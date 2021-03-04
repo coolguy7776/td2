@@ -23,7 +23,25 @@ function showPage(list, page) {
 	const studentList = document.querySelector("ul.student-list");
 	studentList.innerHTML = "";
 
-
+	// loops through every item in the list and generates a card for it using the info in data 
+	for (var i = 0; i < list.length; i++) {
+		if (i >= startIndex && i < endIndex) {
+			const studentItem =
+			`<li class="student-item cf">
+			    <div class="student-details">
+			      <img class="avatar" src="${list[i].picture.large}" alt="Profile Picture">
+			      <h3>${list[i].name.title} ${list[i].name.first} ${list[i].name.last}</h3>
+			      <span class="email">${list[i].email}</span>
+			    </div>
+			    <div class="joined-details">
+			      <span class="date">Joined ${list[i].registered.date}</span>
+			    </div>
+			</li>`;
+			
+			studentList.insertAdjacentHTML('beforeend', studentItem);
+		}
+	}
+}
 
 /*
 Create the `addPagination` function
